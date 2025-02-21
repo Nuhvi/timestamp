@@ -27,7 +27,7 @@ pub struct TimestampFactory {
 
 impl TimestampFactory {
     /// Create a [TimestampFactory] with a random [TimestampFactory::clock_id],
-    /// unless [getrandom()] returned and error, in which case it defaults to `0`.
+    /// unless [getrandom] returned and error, in which case it defaults to `0`.
     pub fn new() -> Self {
         let mut bytes = [0; 8];
         let _ = getrandom::getrandom(&mut bytes);
@@ -75,9 +75,6 @@ pub static DEFAULT_FACTORY: Lazy<Mutex<TimestampFactory>> =
 /// This timestamp is also serialized as BE bytes to remain sortable.
 /// If a `utf-8` encoding is necessary, it is encoded as [base32::Alphabet::Crockford]
 /// to act as a sortable Id.
-///
-/// U64 (through pubky) of microseconds is valid for the next ~600 thousand years!
-/// i64 (in mainline)   of microseconds is valid for the next ~300 thousand years!
 #[derive(Debug, Copy, Clone, PartialEq, PartialOrd, Hash, Eq, Ord)]
 pub struct Timestamp(u64);
 

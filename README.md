@@ -1,4 +1,4 @@
-# Pubky timestamp
+# ntimestamp
 
 Strictly monotonic unix timestamp in microseconds.
 
